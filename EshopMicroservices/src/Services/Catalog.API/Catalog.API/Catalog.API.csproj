@@ -5,15 +5,17 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <DockerfileContext>..\..\..\..\EshopMicroservices</DockerfileContext>
+    <DockerfileContext>..\..\..\..</DockerfileContext>
+    <UserSecretsId>36f0645e-1bca-4338-b4f6-6bebbd062db2</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Carter" Version="10.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.23.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\EshopMicroservices\src\BuildingBlocks\BuildingBlocks\BuildingBlocks.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\BuildingBlocks\BuildingBlocks.csproj" />
   </ItemGroup>
 
 </Project>

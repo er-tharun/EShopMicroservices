@@ -4,6 +4,6 @@
   </Folder>
   <Folder Name="/Services/" />
   <Folder Name="/Services/Catalog.API/">
-    <Project Path="../src/Services/Catalog.API/Catalog.API/Catalog.API.csproj" Id="b6a44dd2-260c-4114-92b6-0587b1b67c02" />
+    <Project Path="src/Services/Catalog.API/Catalog.API/Catalog.API.csproj" />
   </Folder>
 </Solution>
