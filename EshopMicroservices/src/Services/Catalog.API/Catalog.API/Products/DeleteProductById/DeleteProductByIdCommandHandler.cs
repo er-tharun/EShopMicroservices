@@ -7,20 +7,15 @@ using ICommand = BuildingBlocks.CQRS.ICommand;
 
 namespace Catalog.API.Products.DeleteProductById
 {
-    public record DeleteProductByIdCommand(Guid Id) : ICommand;
-    public class DeleteProductByIdCommandHandler(IDocumentSession session) : ICommandHandler<DeleteProductByIdCommand>
+    public record DeleteProductByIdCommand(Guid Id) : ICommand<DeleteProductByIdResult>;
+    public record DeleteProductByIdResult(bool IsSuccess);
+    public class DeleteProductByIdCommandHandler(IDocumentSession session, ILogger<DeleteProductByIdCommandHandler> logger) : ICommandHandler<DeleteProductByIdCommand, DeleteProductByIdResult>
     {
-        public async Task<Unit> Handle(DeleteProductByIdCommand request, CancellationToken cancellationToken)
+        public async Task<DeleteProductByIdResult> Handle(DeleteProductByIdCommand command, CancellationToken cancellationToken)
         {
-            var dataToDelete = await session.Query<Product>().Where(obj => obj.Id == request.Id).FirstOrDefaultAsync();
-
-            if (dataToDelete != null)
-            {
-                session.Delete<Product>(dataToDelete);
-                await session.SaveChangesAsync();
-            }
-
-            return new Unit();
+            session.Delete<Product>(command.Id);
+            await session.SaveChangesAsync(cancellationToken);
+            return new DeleteProductByIdResult(true);
         }
     }
 }

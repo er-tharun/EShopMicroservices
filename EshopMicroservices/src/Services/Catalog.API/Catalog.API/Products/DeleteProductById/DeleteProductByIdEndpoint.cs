@@ -13,7 +13,7 @@ namespace Catalog.API.Products.DeleteProductById
 
                 await sender.Send(command);
 
-                return Results.Accepted;
+                return Results.Ok(true);
             })
             .WithName("Delete product by Id")
             .Produces(StatusCodes.Status202Accepted)
