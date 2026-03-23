@@ -1,8 +1,5 @@
 ﻿using BuildingBlocks.CQRS;
 using Catalog.API.Exceptions;
-using Catalog.API.Models;
-using Marten;
-
 namespace Catalog.API.Products.UpdateProduct
 {
     public record UpdateProductCommand(Guid Id, string Name, List<string> Category, decimal Price, string ImageName, string Description) : ICommand<UpdateProductResult>;
@@ -14,7 +11,7 @@ namespace Catalog.API.Products.UpdateProduct
             var product = await session.LoadAsync<Product>(command.Id, cancellationToken);
             if (product == null)
             {
-                throw new ProductNotFoundException("Product Not Found");
+                throw new ProductNotFoundException(command.Id);
             }
             product.Name = command.Name;
             product.Price = command.Price;

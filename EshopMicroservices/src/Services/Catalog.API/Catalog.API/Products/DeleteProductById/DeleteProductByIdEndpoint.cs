@@ -1,7 +1,4 @@
-﻿using Carter;
-using MediatR;
-
-namespace Catalog.API.Products.DeleteProductById
+﻿namespace Catalog.API.Products.DeleteProductById
 {
     public class DeleteProductByIdEndpoint : ICarterModule
     {
