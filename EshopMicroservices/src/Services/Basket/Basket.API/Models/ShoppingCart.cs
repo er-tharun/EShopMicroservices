@@ -2,8 +2,8 @@
 {
     public class ShoppingCart
     {
-        public string UserName { get; set; }
-        public List<ShoppingCartItem> Items { get; set; }
+        public string UserName { get; set; } = default!;
+        public List<ShoppingCartItem> Items { get; set; } = new();
         public decimal Price => Items.Sum(x => x.Price * x.Quantity);
         public ShoppingCart(string userName)
         {

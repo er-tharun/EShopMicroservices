@@ -1,14 +1,21 @@
-﻿using Basket.API.Models;
-
-namespace Basket.API.Basket.GetBasket
+﻿namespace Basket.API.Basket.GetBasket
 {
     public record GetBasketQuery(string UserName) : IQuery<GetBasketResult>;
     public record GetBasketResult(ShoppingCart Cart);
-    public class GetBasketHandler : IQueryHandler<GetBasketQuery, GetBasketResult>
+
+    public class GetBasketQueryValidator : AbstractValidator<GetBasketQuery>
+    {
+        public GetBasketQueryValidator()
+        {
+            RuleFor(x => x.UserName).NotEmpty().WithMessage("User Name Cannot be empty");
+        }
+    }
+    public class GetBasketHandler(IBasketRepository basketRepo) : IQueryHandler<GetBasketQuery, GetBasketResult>
     {
         public async Task<GetBasketResult> Handle(GetBasketQuery request, CancellationToken cancellationToken)
         {
-            return new GetBasketResult(new ShoppingCart("suv"));
+            var result = await basketRepo.GetBasketAsync(request.UserName, cancellationToken);
+            return new GetBasketResult(result);
         }
     }
 }
