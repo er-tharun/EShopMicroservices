@@ -21,7 +21,7 @@ builder.Services.AddValidatorsFromAssembly(assembly);
 
 builder.Services.AddMarten(config =>
 {
-    config.Connection(builder.Configuration.GetConnectionString("CatalogDb")!);
+    config.Connection(builder.Configuration.GetConnectionString("Database")!);
 }).UseLightweightSessions();
 
 if (builder.Environment.IsDevelopment())
@@ -29,7 +29,7 @@ if (builder.Environment.IsDevelopment())
 
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 
-builder.Services.AddHealthChecks().AddNpgSql(builder.Configuration.GetConnectionString("CatalogDb")!);
+builder.Services.AddHealthChecks().AddNpgSql(builder.Configuration.GetConnectionString("Database")!);
 
 var app = builder.Build();
 

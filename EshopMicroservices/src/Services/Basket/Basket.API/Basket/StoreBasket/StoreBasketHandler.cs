@@ -8,7 +8,6 @@
         public StoreBasketCommandValidator()
         {
             RuleFor(x => x.Cart.UserName).NotEmpty().WithMessage("User Name Cannot be empty");
-            RuleFor(x => x.Cart.Items.Count).LessThan(0).WithMessage("Basket atleast contains 1 Item");
         }
     }
 
