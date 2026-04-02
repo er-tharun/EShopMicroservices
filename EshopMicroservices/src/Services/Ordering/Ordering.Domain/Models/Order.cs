@@ -12,7 +12,7 @@
         public OrderStatus Status { get; private set; } = OrderStatus.Pending;
         public decimal TotalPrice 
         {
-            get => OrderItems.Sum(x => x.Quantity * x.Product.Price);
+            get => OrderItems.Sum(x => x.Quantity * x.Price);
             private set { }
         }
 
@@ -51,7 +51,7 @@
             ArgumentOutOfRangeException.ThrowIfNegative(quantity);
             ArgumentOutOfRangeException.ThrowIfNegative(price);
 
-            var orderItem = OrderItem.Create(OrderItemId.Of(Guid.NewGuid()),Product.Create(name, price), ID,quantity);
+            var orderItem = OrderItem.Create(OrderItemId.Of(Guid.NewGuid()),productId, ID,quantity);
             _orderItems.Add(orderItem);
         }
     }
