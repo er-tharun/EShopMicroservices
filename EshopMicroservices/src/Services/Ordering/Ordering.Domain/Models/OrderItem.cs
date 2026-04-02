@@ -6,31 +6,27 @@
         {
             
         }
-        private OrderItem(ProductId productd, OrderId orderId, int quantity, decimal price)
+        private OrderItem(Product product, OrderId orderId, int quantity, decimal price)
         {
             ID = OrderItemId.Of(Guid.NewGuid());
             OrderId = orderId;
-            ProductId = productd;
+            Product = product;
             Quantity = quantity;
-            Price = price;
         }
         public OrderId OrderId { get; private set; }
-        public ProductId ProductId { get; private set; }
+        public Product Product { get; private set; }
         public int Quantity { get; private set; }
-        public decimal Price { get; private set; }
-        public static OrderItem Create(OrderItemId id, ProductId productd, OrderId orderId, int quantity, decimal price)
+        public static OrderItem Create(OrderItemId id, Product product, OrderId orderId, int quantity)
         {
             ArgumentException.ThrowIfNullOrWhiteSpace(orderId.ToString());
             ArgumentOutOfRangeException.ThrowIfNegative(quantity);
-            ArgumentOutOfRangeException.ThrowIfNegative(price);
 
             return new OrderItem
             {
                 ID = id,
-                ProductId = productd,
+                Product = product,
                 OrderId = orderId,
-                Quantity = quantity,
-                Price = price
+                Quantity = quantity
             };
         }
     }
