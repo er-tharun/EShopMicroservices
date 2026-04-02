@@ -1,9 +1,4 @@
-﻿using System;
-
-using System.Collections.Generic;
-using System.Text;
-
-namespace Ordering.Domain.ValueObjects
+﻿namespace Ordering.Domain.ValueObjects
 {
     public record Address
     {

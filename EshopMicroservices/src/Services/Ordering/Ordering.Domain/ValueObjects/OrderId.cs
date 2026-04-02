@@ -1,7 +1,4 @@
-﻿using Ordering.Domain.Exceptions;
-using System.Security.Principal;
-
-namespace Ordering.Domain.ValueObjects
+﻿namespace Ordering.Domain.ValueObjects
 {
     public record OrderId
     {

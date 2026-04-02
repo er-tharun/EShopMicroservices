@@ -16,9 +16,43 @@
             private set { }
         }
 
-        public static Order Create()
+        public static Order Create(OrderName orderName, 
+            Address billingAddress, 
+            Address shippingAddress, 
+            Payment payment, 
+            OrderStatus orderStatus)
         {
-            return new Order();
+            var order = new Order
+            {
+                ID = OrderId.Of(Guid.NewGuid()),
+                OrderName = orderName,
+                BillingAddress = billingAddress,
+                ShippingAddress = shippingAddress,
+                Payment = payment,
+                Status = orderStatus
+            };
+            order.AddDomainEvent(new OrderCreatedEvent(order));
+            return order;
+        }
+
+        public void Update(OrderName orderName, Address billingAddress, Address shippingAddress, Payment payment, OrderStatus orderStatus)
+        {
+            OrderName = orderName;
+            BillingAddress = billingAddress;
+            ShippingAddress = shippingAddress;
+            Payment = payment;
+            Status = orderStatus;
+
+            AddDomainEvent(new OrderUpdatedEvent(this));
+        }
+
+        public void Add(ProductId productId, int quantity, decimal price)
+        {
+            ArgumentOutOfRangeException.ThrowIfNegative(quantity);
+            ArgumentOutOfRangeException.ThrowIfNegative(price);
+
+            var orderItem = OrderItem.Create(OrderItemId.Of(Guid.NewGuid()),productId, ID,quantity, price);
+            _orderItems.Add(orderItem);
         }
     }
 }
