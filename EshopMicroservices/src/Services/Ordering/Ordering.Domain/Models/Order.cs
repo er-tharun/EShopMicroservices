@@ -16,20 +16,22 @@
             private set { }
         }
 
-        public static Order Create(OrderName orderName, 
+        public static Order Create(OrderId orderId, 
+            CustomerId customerId,
+            OrderName orderName,
+            Address shippingAddress,
             Address billingAddress, 
-            Address shippingAddress, 
-            Payment payment, 
-            OrderStatus orderStatus)
+            Payment payment)
         {
             var order = new Order
             {
-                ID = OrderId.Of(Guid.NewGuid()),
+                ID = orderId,
+                CustomerId = customerId,
                 OrderName = orderName,
                 BillingAddress = billingAddress,
                 ShippingAddress = shippingAddress,
                 Payment = payment,
-                Status = orderStatus
+                Status = OrderStatus.Pending,
             };
             order.AddDomainEvent(new OrderCreatedEvent(order));
             return order;
@@ -46,12 +48,12 @@
             AddDomainEvent(new OrderUpdatedEvent(this));
         }
 
-        public void Add(ProductId productId, int quantity, decimal price, string name)
+        public void Add(ProductId productId, int quantity, decimal price)
         {
             ArgumentOutOfRangeException.ThrowIfNegative(quantity);
             ArgumentOutOfRangeException.ThrowIfNegative(price);
 
-            var orderItem = OrderItem.Create(OrderItemId.Of(Guid.NewGuid()),productId, ID,quantity);
+            var orderItem = OrderItem.Create(OrderItemId.Of(Guid.NewGuid()),productId, ID,quantity, price   );
             _orderItems.Add(orderItem);
         }
     }

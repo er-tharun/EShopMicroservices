@@ -9,14 +9,14 @@ namespace Ordering.Domain.Models
         public string Name { get; set; }
         public decimal Price { get; set; }
 
-        public static Product Create(string name, decimal price)
+        public static Product Create(ProductId id, string name, decimal price)
         {
             ArgumentException.ThrowIfNullOrWhiteSpace(name);
             ArgumentOutOfRangeException.ThrowIfNegative(price);
 
             return new Product
             {
-                ID = ProductId.Of(Guid.NewGuid()),
+                ID = id,
                 Name = name,
                 Price = price
             };
