@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Ordering.API.Interceptor;
+using Ordering.Application.Data;
 using Ordering.Infrastructure.Data;
 
 namespace Ordering.Infrastructure
@@ -21,6 +22,8 @@ namespace Ordering.Infrastructure
                 options.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
                 options.UseSqlServer(configuration.GetConnectionString("Database"));
             });
+
+            services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
             return services;
         }
     }
