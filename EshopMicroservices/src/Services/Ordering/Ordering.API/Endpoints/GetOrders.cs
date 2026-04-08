@@ -6,7 +6,7 @@
     {
         public void AddRoutes(IEndpointRouteBuilder app)
         {
-            app.MapGet("/order", async (GetOrdersRequest request, ISender sender) =>
+            app.MapGet("/order", async ([AsParameters] GetOrdersRequest request, [FromServices] ISender sender) =>
             {
                 var query = request.Adapt<GetOrdersQuery>();
 

@@ -19,7 +19,10 @@ namespace Ordering.API
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
-            if(app.Environment.IsDevelopment())
+
+            app.UseApiServices();
+
+            if (app.Environment.IsDevelopment())
             {
                 app.InitializeDatabaseAsync().GetAwaiter().GetResult();
             }

@@ -6,7 +6,7 @@
     {
         public void AddRoutes(IEndpointRouteBuilder app)
         {
-            app.MapPut("/order", async (UpdateOrderRequest request, ISender sender) =>
+            app.MapPut("/order", async ([FromBody] UpdateOrderRequest request, [FromServices] ISender sender) =>
             {
                 var command = request.Adapt<UpdateOrderCommand>();
 

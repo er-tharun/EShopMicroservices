@@ -2,7 +2,7 @@
 {
     public record CreateOrderCommand(OrderDto Order) : ICommand<CreateOrderResult>;
 
-    public record CreateOrderResult(bool IsSuccess);
+    public record CreateOrderResult(Guid OrderId);
 
     public class CreateOrderValidator : AbstractValidator<CreateOrderCommand>
     {

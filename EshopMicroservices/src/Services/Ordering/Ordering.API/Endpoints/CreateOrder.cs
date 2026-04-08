@@ -1,10 +1,4 @@
-﻿using Azure;
-using Carter;
-using Mapster;
-using MediatR;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Ordering.Application.Dtos;
-namespace Ordering.API.Endpoints
+﻿namespace Ordering.API.Endpoints
 {
     public record CreateOrderRequest(OrderDto Order);
     public record CreateOrderResponse(Guid OrderId);
@@ -12,8 +6,9 @@ namespace Ordering.API.Endpoints
     {
         public void AddRoutes(IEndpointRouteBuilder app)
         {
-            app.MapPost("/order", async (CreateOrderRequest request, ISender sender) =>
+            app.MapPost("/orders", async ([FromBody] CreateOrderRequest request, [FromServices] ISender sender) =>
             {
+                //var request = new CreateOrderCommand(InitialData.OrdersWithItems.ToOrderDto().First());
                 var command = request.Adapt<CreateOrderCommand>();
 
                 var result = await sender.Send(command);

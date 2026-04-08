@@ -6,10 +6,11 @@
     {
         public async Task<CreateOrderResult> Handle(CreateOrderCommand command, CancellationToken cancellationToken)
         {
-            context.Order.Add(CreateNewOrder(command.Order));
+            var order = CreateNewOrder(command.Order);
+            context.Order.Add(order);
             await context.SaveChangesAsync(cancellationToken);
 
-            return new CreateOrderResult(true);
+            return new CreateOrderResult(order.ID.Value);
         }
 
         private Order CreateNewOrder(OrderDto orderDto)

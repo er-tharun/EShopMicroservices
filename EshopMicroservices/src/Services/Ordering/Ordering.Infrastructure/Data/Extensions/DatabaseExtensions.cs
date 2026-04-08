@@ -20,9 +20,12 @@ namespace Ordering.Infrastructure.Data.Extensions
 
         private static async Task SeedAsync(ApplicationDbContext context)
         {
-            await SeedCustomerAsync(context);
-            await SeedProductAsync(context);
-            await SeedOrdersWithItems(context);
+            if(!context.Customer.Any())
+                await SeedCustomerAsync(context);
+            if (!context.Product.Any())
+                await SeedProductAsync(context);
+            if (!context.Order.Any())
+                await SeedOrdersWithItems(context);
         }
 
         private static async Task SeedCustomerAsync(ApplicationDbContext context)
