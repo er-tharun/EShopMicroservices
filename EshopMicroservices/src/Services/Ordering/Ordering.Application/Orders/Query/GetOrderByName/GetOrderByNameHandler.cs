@@ -9,7 +9,7 @@ namespace Ordering.Application.Orders.Query.GetOrderByName
 {
     public class GetOrderByNameHandler
         (IApplicationDbContext context)
-        : ICommandHandler<GetOrderByNameQuery, GetOrderByNameResult>
+        : IQueryHandler<GetOrderByNameQuery, GetOrderByNameResult>
     {
         public async Task<GetOrderByNameResult> Handle(GetOrderByNameQuery query, CancellationToken cancellationToken)
         {

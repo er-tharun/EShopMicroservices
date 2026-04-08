@@ -9,7 +9,7 @@ namespace Ordering.Application.Orders.Query.GetOrderByCustomer
 {
     public class GetOrderByCustomerHandler
         (IApplicationDbContext context)
-        : ICommandHandler<GetOrderByCustomerQuery, GetOrderByCustomerResult>
+        : IQueryHandler<GetOrderByCustomerQuery, GetOrderByCustomerResult>
     {
         public async Task<GetOrderByCustomerResult> Handle(GetOrderByCustomerQuery query, CancellationToken cancellationToken)
         {
