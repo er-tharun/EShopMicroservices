@@ -1,9 +1,4 @@
-﻿using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Ordering.Application.Orders.Command.UpdateOrder
+﻿namespace Ordering.Application.Orders.Command.UpdateOrder
 {
     public record UpdateOrderCommand(OrderDto Order) : ICommand<UpdateOrderResult>;
 

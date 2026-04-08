@@ -1,9 +1,4 @@
-﻿using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Ordering.Application.Orders.Command.DeleteOrder
+﻿namespace Ordering.Application.Orders.Command.DeleteOrder
 {
     public record DeleteOrderCommand(Guid OrderId) : ICommand<DeleteOrderResult>;
 

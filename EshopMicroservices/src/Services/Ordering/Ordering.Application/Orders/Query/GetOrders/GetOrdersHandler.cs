@@ -1,11 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Ordering.Application.Data;
-using Ordering.Application.Extensions;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Ordering.Application.Orders.Query.GetOrders
+﻿namespace Ordering.Application.Orders.Query.GetOrders
 {
     public class GetOrdersHandler
         (IApplicationDbContext context)

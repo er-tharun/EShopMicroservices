@@ -1,11 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Ordering.Application.Data;
-using Ordering.Application.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Ordering.Application.Orders.Command.DeleteOrder
+﻿namespace Ordering.Application.Orders.Command.DeleteOrder
 {
     public class DeleteOrderHandler
         (IApplicationDbContext context)

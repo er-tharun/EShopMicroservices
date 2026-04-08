@@ -1,11 +1,4 @@
-﻿using MediatR;
-using Microsoft.Extensions.Logging;
-using Ordering.Domain.Events;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Ordering.Application.Orders.EventHandlers
+﻿namespace Ordering.Application.Orders.EventHandlers
 {
     public class UpdateOrderEventHandler
         (ILogger<UpdateOrderEventHandler> logger)

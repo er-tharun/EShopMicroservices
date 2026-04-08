@@ -1,9 +1,4 @@
-﻿using Ordering.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Ordering.Application.Extensions
+﻿namespace Ordering.Application.Extensions
 {
     public static class OrderExtensions
     {

@@ -1,12 +1,4 @@
-﻿using Ordering.Application.Data;
-using Ordering.Application.Exceptions;
-using Ordering.Domain.Models;
-using Ordering.Domain.ValueObjects;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Ordering.Application.Orders.Command.UpdateOrder
+﻿namespace Ordering.Application.Orders.Command.UpdateOrder
 {
     public class UpdateOrderHandler
         (IApplicationDbContext context)

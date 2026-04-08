@@ -1,11 +1,4 @@
-﻿using Ordering.Application.Data;
-using Ordering.Domain.Models;
-using Ordering.Domain.ValueObjects;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Ordering.Application.Orders.Command.CreateOrder
+﻿namespace Ordering.Application.Orders.Command.CreateOrder
 {
     public class CreateOrderHandler
         (IApplicationDbContext context)
