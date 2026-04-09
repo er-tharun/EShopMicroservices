@@ -7,6 +7,7 @@
         public async Task<GetOrdersResult> Handle(GetOrdersQuery query, CancellationToken cancellationToken)
         {
             var orders = await context.Order
+                .Include(o => o.OrderItems)
                 .Skip(query.pageNumber - 1)
                 .Take(query.pageSize)
                 .ToListAsync(cancellationToken);

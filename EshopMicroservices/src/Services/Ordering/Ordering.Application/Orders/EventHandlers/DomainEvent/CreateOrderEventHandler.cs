@@ -1,4 +1,4 @@
-﻿namespace Ordering.Application.Orders.EventHandlers
+﻿namespace Ordering.Application.Orders.EventHandlers.DomainEvent
 {
     public class CreateOrderEventHandler
         (ILogger<CreateOrderEventHandler> logger)

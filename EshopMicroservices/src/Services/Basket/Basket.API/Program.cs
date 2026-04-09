@@ -1,3 +1,4 @@
+using BuildingBlocks.Messaging.Extensions;
 using Discount.Grpc;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -39,6 +40,8 @@ builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(
 {
     options.Address = new Uri(builder.Configuration["GrpcServices:DiscountUrl"]!);
 });
+
+builder.Services.AddMessagingService(builder.Configuration, assembly);
 
 var app = builder.Build();
 
