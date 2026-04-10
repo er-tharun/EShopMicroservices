@@ -27,9 +27,9 @@ namespace Basket.API.Basket.CheckoutBasket
             if (basket == null)
                 throw new BasketNotFoundException(command.BasketDto.UserName);
 
-            command.BasketDto.TotalPrice = basket.Price;
-
             var publishEvent = command.BasketDto.Adapt<BasketCheckoutEvent>();
+
+            publishEvent.TotalPrice = basket.Price;
 
             await publish.Publish(publishEvent, cancellationToken);
 

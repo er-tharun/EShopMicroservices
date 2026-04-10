@@ -6,7 +6,7 @@
     {
         public Task Handle(OrderCreatedEvent notification, CancellationToken cancellationToken)
         {
-            logger.LogInformation("Event Handler");
+            logger.LogInformation("Event Handler {name}", notification.GetType().Namespace);
             return Task.CompletedTask;
         }
     }
