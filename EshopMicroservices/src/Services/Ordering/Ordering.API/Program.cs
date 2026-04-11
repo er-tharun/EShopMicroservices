@@ -1,7 +1,3 @@
-using Ordering.Application;
-using Ordering.Infrastructure;
-using Ordering.Infrastructure.Data.Extensions;
-
 namespace Ordering.API
 {
     public class Program
@@ -14,7 +10,7 @@ namespace Ordering.API
             builder.Services
                 .AddApplicationServices(builder.Configuration)
                 .AddInfrastructureServices(builder.Configuration)
-                .AddApiServices(builder.Configuration);
+                .AddApiServices(builder.);
 
             var app = builder.Build();
 
