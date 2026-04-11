@@ -1,6 +1,6 @@
 # EShopMicroservices
 
-[](https://github.com/er-tharun/EShopMicroservices/blob/main/EshopMicroservices/src/Images/architecture.png)
+![Eshop Microservices Architecture](https://github.com/er-tharun/EShopMicroservices/blob/main/EshopMicroservices/src/Images/architecture.png)
 
 
 ## Architectures
