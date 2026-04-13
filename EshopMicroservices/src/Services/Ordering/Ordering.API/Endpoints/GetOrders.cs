@@ -1,12 +1,14 @@
-﻿namespace Ordering.API.Endpoints
+﻿using BuildingBlocks.Pagination;
+
+namespace Ordering.API.Endpoints
 {
     public record GetOrdersRequest(int PageSize, int PageNumber);
-    public record GetOrdersResponse(IEnumerable<OrderDto> Orders);
+    public record GetOrdersResponse(PaginationResponse<OrderDto> Orders);
     public class GetOrders : ICarterModule
     {
         public void AddRoutes(IEndpointRouteBuilder app)
         {
-            app.MapGet("/order", async ([AsParameters] GetOrdersRequest request, [FromServices] ISender sender) =>
+            app.MapGet("/orders", async ([AsParameters] GetOrdersRequest request, [FromServices] ISender sender) =>
             {
                 var query = request.Adapt<GetOrdersQuery>();
 

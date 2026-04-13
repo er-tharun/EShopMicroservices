@@ -1,3 +1,5 @@
+using Shopping.Web.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,7 +9,20 @@ builder.Services
     .AddRefitClient<ICatalogService>()
     .ConfigureHttpClient(client =>
     {
-        client.BaseAddress = new Uri(builder.Configuration["Services:CatelogService"]!);
+        client.BaseAddress = new Uri(builder.Configuration["Gateway:service"]!);
+    });
+
+builder.Services
+    .AddRefitClient<IBasketService>()
+    .ConfigureHttpClient(client =>
+    {
+        client.BaseAddress = new Uri(builder.Configuration["Gateway:service"]!);
+    });
+builder.Services
+    .AddRefitClient<IOrderingService>()
+    .ConfigureHttpClient(client =>
+    {
+        client.BaseAddress = new Uri(builder.Configuration["Gateway:service"]!);
     });
 
 var app = builder.Build();

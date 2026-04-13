@@ -6,7 +6,7 @@
     {
         public void AddRoutes(IEndpointRouteBuilder app)
         {
-            app.MapDelete("/order", async ([FromBody] DeleteOrderRequest request, [FromServices] ISender sender) =>
+            app.MapDelete("/orders", async ([FromBody] DeleteOrderRequest request, [FromServices] ISender sender) =>
             {
                 var command = request.Adapt<DeleteOrderRequest>();
 
