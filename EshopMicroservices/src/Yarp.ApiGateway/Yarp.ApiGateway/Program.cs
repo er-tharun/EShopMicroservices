@@ -10,7 +10,7 @@ builder.Services.AddRateLimiter(options =>
     options.AddFixedWindowLimiter("globalRateLimitingPolicy", cfg =>
     {
         cfg.Window = TimeSpan.FromSeconds(60);
-        cfg.PermitLimit = 5;
+        cfg.PermitLimit = 20;
     });
 });
 

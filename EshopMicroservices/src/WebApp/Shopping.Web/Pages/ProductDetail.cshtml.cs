@@ -4,18 +4,20 @@ using Shopping.Web.Services;
 
 namespace Shopping.Web.Pages
 {
-    public class IndexModel
+    public class ProductDetailModel
         (ICatalogService catalogService,
         IBasketService basketService,
         ILogger<IndexModel> logger)
         : PageModel
     {
-        public IEnumerable<ProductModal> Product { get; set; }
-        public async Task OnGetAsync()
+        public ProductModal Product { get; set; }
+        public string Color { get; set; }
+        public int Quantity { get; set; }
+        public async Task<IActionResult> OnGetAsync(Guid productId)
         {
-            logger.LogInformation("Visited Index page");
-            var data = await catalogService.GetProducts();
-            Product = data.Products;
+            var catalogResponse = await catalogService.GetProductById(productId);
+            Product = catalogResponse.Product;
+            return Page();
         }
 
         public async Task<IActionResult> OnPostAddToCart(Guid productId)
@@ -36,7 +38,5 @@ namespace Shopping.Web.Pages
 
             return RedirectToPage("Cart");
         }
-
-        
     }
 }
