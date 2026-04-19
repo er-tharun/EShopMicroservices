@@ -10,7 +10,7 @@ namespace Ordering.API
             builder.Services
                 .AddApplicationServices(builder.Configuration)
                 .AddInfrastructureServices(builder.Configuration)
-                .AddApiServices(builder.);
+                .AddApiServices(builder.Configuration);
 
             var app = builder.Build();
 
